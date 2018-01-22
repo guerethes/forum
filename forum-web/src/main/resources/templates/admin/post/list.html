@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/admin :: page">
+
+<body>
+<div th:fragment="content">
+
+	<div class="container" style="padding-top: 20px;">
+
+		<div class="row">
+			<div class="col-lg-8 col-md-8">
+				<!-- POST -->
+				<div class="post">
+					<div class="text">
+						<table id="datatable" class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Post</th>
+									<th>Create</th>
+									<th width="10px"></th>
+									<th width="10px"></th>
+									<th width="10px"></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr th:each="post : ${postList}">
+									<td th:text="${post.post}"></td>
+									<td th:text="${post.created}"></td>
+									<td>
+										<a th:href="@{/post/show/{type}(type=${post.id})}" class="glyphicon glyphicon-eye-open" title="Visualizar"></a>
+									</td>
+									<td>
+										<a th:href="@{/post/edit/{type}(type=${post.id})}" class="glyphicon glyphicon-edit" title="Editar"></a>
+									</td>
+									<td>
+										<a th:href="@{/post/delete/{type}(type=${post.id})}" class="glyphicon glyphicon-trash" title="Remover"> </a>
+									</td>
+								</tr>
+							</tbody>
+
+						</table>
+
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<div class="sidebarblock">
+					<h3>My Active Threads</h3>
+					<th:block th:each="thread : ${activeThreads}">
+						<div class="divline"></div>
+						<div class="blocktxt">
+							<a th:href="@{/post/show/{type}(type=${thread.id})}" th:text="${thread.title}" title="Visualizar"></a>
+						</div>
+					</th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+
+</html>

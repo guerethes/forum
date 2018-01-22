@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      th:fragment="page">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forum :: Question & Discursion</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+
+    <!-- Custom -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}"/>
+
+    <!-- fonts
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        -->
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+    <!-- CSS STYLE-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/settings.css}"/>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <!-- Slider -->
+    <div class="tp-banner-container">
+        <div class="tp-banner" >
+            <ul>
+                <!-- SLIDE  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                    <!-- MAIN IMAGE -->
+                    <img th:src="@{/images/slide.jpeg}" alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <!-- LAYERS -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- //Slider -->
+
+    <div class="headernav">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 col-xs-3 col-sm-2 col-md-2 logo "><a href="index.html"><img src="images/logo.jpeg" alt=""  /></a></div>
+                <div class="col-lg-7 search hidden-xs hidden-sm col-md-3">
+                    <div class="wrap">
+                        <form action="#" method="post" class="form">
+                            <div class="pull-left txt"><input type="text" class="form-control" placeholder="Search Topics"></div>
+                            <div class="pull-right"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div role="main" th:include="this :: content" />
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="images/logo.jpeg" alt=""  /></a></div>
+                <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2018, J. Guerethes </div>
+                <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
+                    <ul class="socialicons">
+                        <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-cloud"></i></a></li>
+                        <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- get jQuery from the google apis -->
+<script th:src="@{/js/jquery_1.10.1.js}"></script>
+
+<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+<script th:src="@{/js/jquery.themepunch.plugins.min.js}"></script>
+<script th:src="@{/js/jquery.themepunch.revolution.min.js}"></script>
+
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<!-- LOOK THE DOCUMENTATION FOR MORE INFORMATIONS -->
+<script type="text/javascript">
+    var revapi;
+    jQuery(document).ready(function() {
+        "use strict";
+        revapi = jQuery('.tp-banner').revolution(
+            {
+                delay: 1000,
+                startwidth: 1200,
+                startheight: 278,
+                hideThumbs: 10,
+                fullWidth: "on"
+            });
+    });	//ready
+</script>
+
+<!-- END REVOLUTION SLIDER -->
+</body>
+</html>
