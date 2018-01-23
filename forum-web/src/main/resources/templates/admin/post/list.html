@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/admin :: page">
+
+	<body>
+
+		<div th:fragment="content">
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+
+					<table class="table datatable">
+
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Create</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="post : ${postList}">
+								<td><a th:href="@{/post/show/{type}(type=${post.id})}" th:text="${post.title}"></a> </td>
+								<td th:text="${#dates.format(post.created, 'yyyy-MM-dd hh:mm a')}"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/admin :: page">
+
+<body>
+
+<div th:fragment="content">
+
+	<div class="page-content-wrap">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3 th:text="${post.title}"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="timeline timeline-right">
+					<div class="timeline-item timeline-main">
+						<div class="timeline-date" th:text="${#dates.format(post.created, 'yyyy')}"></div>
+					</div>
+					<div class="timeline-item timeline-item-right">
+						<div class="timeline-item-info" th:text="${#dates.format(post.created, 'dd MMM yyyy hh:mm a')}"></div>
+						<div class="timeline-item-icon"><span class="fa fa-globe"></span></div>
+						<div class="timeline-item-content">
+							<div class="timeline-heading">
+								<span th:text="'Author : ' + ${post.user.fullName}"></span>
+								<th:block th:if="${ user.id == post.user.id }">
+									<a th:href="@{/post/edit/{type}(type=${post.id})}"> <span class="fa fa-pencil"></span></a>
+								</th:block>
+							</div>
+							<div class="timeline-body">
+								<p> <th:block th:utext="${post.post}"/> </p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<th:block th:each="comment : ${post.commentPost}">
+					<div class="timeline timeline-right">
+						<div class="timeline-item timeline-item-right">
+							<div class="timeline-item-info" th:text="${#dates.format(comment.created, 'dd MMM yyyy hh:mm a')}"></div>
+							<div class="timeline-item-icon"><span class="fa fa-globe"></span></div>
+							<div class="timeline-item-content">
+								<div class="timeline-heading">
+									<span th:text="'Author : ' + ${comment.user.fullName}"></span>
+									<th:block th:if="${ user.id == comment.user.id }">
+										<a th:href="@{/comment/edit/{type}(type=${comment.id})}"> <span class="fa fa-pencil"></span></a>
+									</th:block>
+								</div>
+								<div class="timeline-body">
+									<p> <th:block th:utext="${comment.description}"/> </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+
+				<form th:action="@{/comment/save}" method="POST" class="form-horizontal" novalidate>
+					<input type="hidden" th:value="${post.id}" th:attr="name='post.id'" />
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><strong>New Answer/Question</strong></h3>
+						</div>
+
+						<div class="panel-body">
+							<div class="form-group">
+								<label class="col-md-1 col-xs-12 control-label">Comment</label>
+								<div class="col-md-12 col-xs-12">
+									<textarea th:field="*{comment.description}" class="summernote_email" cols="25" rows="9" th:required="required"></textarea>
+									<span class="help-block">Place your answer/question here.</span>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="panel-footer">
+							<button id="send" name="action" value="save" type="submit" class="btn btn-primary pull-right">Create</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>

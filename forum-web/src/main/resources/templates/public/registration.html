@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/public :: page">
+
+<body>
+
+<div th:fragment="content">
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<form th:action="@{/registration}" method="POST" class="form-horizontal" novalidate>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><strong>Registration</strong></h3>
+					</div>
+					<!--
+					<div class="panel-body">
+						<p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
+					</div>
+					-->
+					<div class="panel-body">
+
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Name</label>
+							<div class="col-md-6 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+									<input id="nome" class="form-control" th:field="*{user.name}" name="name" placeholder="Name" th:required="required" type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Last Name</label>
+							<div class="col-md-6 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+									<input id="lastName" class="form-control" th:field="*{user.lastName}" name="nome" placeholder="Last Name" th:required="required" type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Email</label>
+							<div class="col-md-6 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+									<input id="email" class="form-control" th:field="*{user.email}" name="email" placeholder="Email" th:required="required" type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-3 col-xs-12 control-label">Password</label>
+							<div class="col-md-6 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+									<input id="password" class="form-control col-md-7 col-xs-12" th:field="*{user.password}" name="password" placeholder="Password" th:required="required" type="password">
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="panel-footer">
+						<button id="send" name="action" value="save" type="submit" class="btn btn-primary pull-right">Sign Up</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</div>
+
+</body>
+
+</html>

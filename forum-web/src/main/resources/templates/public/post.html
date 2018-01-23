@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/public :: page">
+
+<body>
+
+<div th:fragment="content">
+
+	<div class="page-content-wrap">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<h3 th:text="${post.title}"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="timeline timeline-right">
+					<div class="timeline-item timeline-main">
+						<div class="timeline-date" th:text="${#dates.format(post.created, 'yyyy')}"></div>
+					</div>
+					<div class="timeline-item timeline-item-right">
+						<div class="timeline-item-info" th:text="${#dates.format(post.created, 'dd MMM yyyy hh:mm a')}"></div>
+						<div class="timeline-item-icon"><span class="fa fa-globe"></span></div>
+						<div class="timeline-item-content">
+							<div class="timeline-heading">
+								<span th:text="'Author : ' + ${post.user.fullName}"></span>
+							</div>
+							<div class="timeline-body">
+								<p> <th:block th:utext="${post.post}"/> </p>
+							</div>
+							<th:block th:if="${post.category != null}">
+								<ul class="list-tags">
+									<li><a th:href="@{/postSearch/search?category={type}(type=${post.category.id})}" th:text="${post.category.title}"><span class="fa fa-tag"></span></a></li>
+								</ul>
+							</th:block>
+						</div>
+					</div>
+				</div>
+
+				<th:block th:each="comment : ${post.commentPost}">
+					<div class="timeline timeline-right">
+						<div class="timeline-item timeline-item-right">
+							<div class="timeline-item-info" th:text="${#dates.format(comment.created, 'dd MMM yyyy hh:mm a')}"></div>
+							<div class="timeline-item-icon"><span class="fa fa-globe"></span></div>
+							<div class="timeline-item-content">
+								<div class="timeline-heading">
+									<span th:text="'Author : ' + ${comment.user.fullName}"></span>
+								</div>
+								<div class="timeline-body">
+									<p> <th:block th:utext="${comment.description}"/> </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</th:block>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>

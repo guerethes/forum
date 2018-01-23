@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/admin :: page">
+
+<body>
+
+<div th:fragment="content">
+
+	<div class="panel panel-default">
+
+			<div class="panel-body">
+
+			<form th:action="@{/post/save}" method="POST" class="form-horizontal" novalidate>
+				<input type="hidden" name="id" th:field="*{post.id}" th:value="${post.id}" />
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><strong>Create Post</strong></h3>
+					</div>
+					<!--
+					<div class="panel-body">
+						<p>This is non libero bibendum, scelerisque arcu id, placerat nunc. Integer ullamcorper rutrum dui eget porta. Fusce enim dui, pulvinar a augue nec, dapibus hendrerit mauris. Praesent efficitur, elit non convallis faucibus, enim sapien suscipit mi, sit amet fringilla felis arcu id sem. Phasellus semper felis in odio convallis, et venenatis nisl posuere. Morbi non aliquet magna, a consectetur risus. Vivamus quis tellus eros. Nulla sagittis nisi sit amet orci consectetur laoreet. Vivamus volutpat erat ac vulputate laoreet. Phasellus eu ipsum massa.</p>
+					</div>
+					-->
+					<div class="panel-body">
+
+						<div class="form-group">
+							<label class="col-md-1 col-xs-12 control-label">Title</label>
+							<div class="col-md-12 col-xs-12">
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+									<input id="title" class="form-control col-md-7 col-xs-12" th:field="*{post.title}" maxlength="50" name="post" placeholder="Type your title here" th:required="required"> </input>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-1 col-xs-12 control-label">Category</label>
+							<div class="col-md-12 col-xs-12">
+								<select th:field="*{post.category.id}" class="form-control col-md-7 col-xs-12">
+									<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.title}">Category</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-md-1 col-xs-12 control-label">Textarea</label>
+							<div class="col-md-12 col-xs-12">
+								<textarea th:field="*{post.post}" class="summernote_email" cols="14" rows="9" th:required="required"></textarea>
+								<span class="help-block">Place your question here.</span>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="panel-footer">
+						<button id="send" name="action" value="save" type="submit" class="btn btn-primary pull-right">Create</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</div>
+
+</body>
+
+</html>

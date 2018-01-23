@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:include="layouts/admin :: page">
+
+    <body>
+        <div th:fragment="content">
+            <th:block th:each="post : ${postList}">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3> <th:block th:text="${post.title}" /> <small class="pull-right text-muted"><span class="fa fa-clock-o"></span> <th:block th:text="${#dates.format(post.created, 'dd MMM yyyy hh:mm a')}" /> </small></h3>
+                        <p> <th:block th:utext="${post.post}" /> </p>
+                        <p class="text-muted"><strong th:text="${post.user.fullName}"></strong></p>
+                    </div>
+                    <th:block th:if="${post.category != null}">
+                        <ul class="list-tags">
+                            <li><a th:href="@{/postSearch/search?category={type}(type=${post.category.id})}" th:text="${post.category.title}"><span class="fa fa-tag"></span></a></li>
+                        </ul>
+                    </th:block>
+                </div>
+            </th:block>
+        </div>
+    </body>
+
+</html>

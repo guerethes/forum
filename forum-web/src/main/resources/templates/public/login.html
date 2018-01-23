@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- META SECTION -->
+	<title>Fórum - Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<!-- END META SECTION -->
+
+	<!-- CSS INCLUDE -->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/theme-default.css}"/>
+	<!-- EOF CSS INCLUDE -->
+</head>
+<body>
+
+<div class="login-container">
+
+	<div class="login-box animated fadeInDown">
+		<div class="login-logo"></div>
+		<div class="login-body">
+			<div class="login-title"><strong>Welcome</strong>, Please login</div>
+
+			<form th:action="@{/login}" method="POST" class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-12">
+						<input type="text" id="email" name="email" th:placeholder="Email" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
+						<input type="password" th:placeholder="Password" id="password" name="password" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-info btn-block">Log In</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="login-footer">
+			<div class="pull-left">
+				&copy; 2018 ForumApp
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
